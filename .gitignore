@@ -121,3 +121,6 @@ GitHub.sublime-settings
 .DS_Store
 Desktop.ini
 staticfiles
+
+# Tailwind NodeModules
+**/node_modules
