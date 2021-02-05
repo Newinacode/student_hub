@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'ckeditor',
 ]
 
 MIDDLEWARE = [
@@ -132,3 +133,19 @@ STATICFILES_DIRS = [
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+
+# Ckeditor configurations
+
+CKEDITOR_CONFIGS = {
+    'default': {
+        'toolbar': 'Custom',
+        'toolbar_Custom': [
+            ["Bold", "Italic"],
+            ['NumberedList', 'BulletedList', 'JustifyLeft', 'JustifyCenter'],
+            ["Image", "Link", "Unlink", 'HorizontalRule', ],
+            ["Subscript", "Superscript"], ['Undo', 'Redo'], ["Source"],
+            ["Maximize"]
+        ],
+    }
+}
