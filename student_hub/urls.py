@@ -20,6 +20,7 @@ from django.conf import settings
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('question/', include('questions.urls')),
     path('', include('questions.urls')),
 ]
 if (settings.DEBUG):

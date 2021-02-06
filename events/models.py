@@ -12,7 +12,7 @@ class Event(models.Model):
     start_date = models.DateTimeField()
     end_date = models.DateTimeField()
     author = models.ForeignKey(User, on_delete=models.CASCADE)
-    timestamp = models.DateTimeField(default=timezone)
+    timestamp = models.DateTimeField(default=timezone.now)
 
     def __str__(self) -> str:
         return self.name

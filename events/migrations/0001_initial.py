@@ -17,15 +17,15 @@ class Migration(migrations.Migration):
 
     operations = [
         migrations.CreateModel(
-            name='Note',
+            name='Event',
             fields=[
                 ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('title', models.CharField(max_length=100)),
+                ('name', models.CharField(max_length=100)),
                 ('description', ckeditor.fields.RichTextField(blank=True, null=True)),
-                ('slug', models.SlugField(blank=True, unique=True)),
-                ('document', models.FileField(upload_to='notes/')),
-                ('date_created', models.DateTimeField(default=django.utils.timezone.now)),
-                ('author', models.ForeignKey(on_delete=django.db.models.deletion.DO_NOTHING, to=settings.AUTH_USER_MODEL)),
+                ('start_date', models.DateTimeField()),
+                ('end_date', models.DateTimeField()),
+                ('timestamp', models.DateTimeField(default=django.utils.timezone.now)),
+                ('author', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to=settings.AUTH_USER_MODEL)),
             ],
         ),
     ]
