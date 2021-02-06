@@ -47,6 +47,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'ckeditor',
+    'django_cleanup'  # should be after the apps if order for it to work
 ]
 
 MIDDLEWARE = [
