@@ -16,3 +16,8 @@ class Note(models.Model):
 
     def __str__(self) -> str:
         return self.title
+
+    def save(self, *args, **kwargs):
+        self.slug = slugify(f"{self.title} {self.author.id} {self.date_created.strftime('%S')}")
+        super(Note, self).save(*args, **kwargs)
+
