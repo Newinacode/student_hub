@@ -19,5 +19,5 @@ class Question(models.Model):
         return self.title
 
     def save(self, *args, **kwargs):
-        self.slug = slugify(self.title)
+        self.slug = slugify(f"{self.title} {self.author.id} {self.date_posted.strftime('%S')}")
         super(Question, self).save(*args, **kwargs)
