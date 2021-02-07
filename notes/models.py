@@ -2,6 +2,7 @@ from django.db import models
 from ckeditor.fields import RichTextField
 from django.contrib.auth.models import User
 from django.utils import timezone
+from django.utils.text import slugify
 
 # Create your models here.
 
@@ -18,6 +19,6 @@ class Note(models.Model):
         return self.title
 
     def save(self, *args, **kwargs):
-        self.slug = slugify(f"{self.title} {self.author.id} {self.date_created.strftime('%S')}")
+        self.slug = slugify(
+            f"{self.title} {self.author.id} {self.date_created.strftime('%S')}")
         super(Note, self).save(*args, **kwargs)
-

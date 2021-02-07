@@ -18,12 +18,34 @@
       crossorigin="anonymous"
     />
 
+    <!-- Main CSS-->
+    <link rel="stylesheet" href="{% static 'css/main.css' %}" />
+
     <title>Student Hub</title>
   </head>
   <!-- End of Head -->
   <!-- Start of Body -->
   <body>
-    <h1>Hello, world!</h1>
+    {% include 'navbar.html' %}
+
+    <!-- block -->
+    <main class="container-fluid pt-5 mt-4">
+      <div class="row">
+        <!-- Error message on top of the page -->
+        {% if messages %} {% for message in messages %}
+        <div class="alert alert-{{message.tags}}">{{ message }}</div>
+        {% endfor %} {% endif %}
+        <!-- End of error message -->
+        <div class="col-md-2 px-1 position-fixed">
+          <div class="flex-column flex-nowrap vh-100 overflow-auto p-2">
+            {% include 'sidebar.html' %}
+          </div>
+        </div>
+        <div class="col-md-10 offset-2">
+          {% block content %} {% endblock content %}
+        </div>
+      </div>
+    </main>
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
