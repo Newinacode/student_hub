@@ -22,6 +22,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('question/', include('questions.urls')),
     path('', include('questions.urls')),
+    path('events/',include('events.urls')),
 ]
 if (settings.DEBUG):
     urlpatterns += static(settings.STATIC_URL,
