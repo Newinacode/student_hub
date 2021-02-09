@@ -1,11 +1,12 @@
 from .forms import EventModelForm
 from django.views import generic
 from .models import Event
+from django.urls import reverse
 
-class EventCreateView(generic.CreateView): 
+
+class EventCreateView(generic.CreateView):
     template_name = 'events/create_event.html'
     form_class = EventModelForm
-
 
     def get_success_url(self):
         return reverse("list-event")
@@ -18,7 +19,7 @@ class EventDetailView(generic.DetailView):
     context_object_name = "event"
 
 
-class EventUpdateView(generic.UpdateView): 
+class EventUpdateView(generic.UpdateView):
     template_name = "events/event_update.html"
     queryset = Event.objects.all()
 
@@ -30,15 +31,8 @@ class EventDeleteView(generic.DeleteView):
     queryset = Event.objects.all()
 
 
-
 class EventListView(generic.ListView):
     template_name = "events/event_list.html"
     queryset = Event.objects.all()
 
     context_object_name = 'events'
-
-
-
-
-
-

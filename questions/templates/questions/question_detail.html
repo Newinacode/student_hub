@@ -1,0 +1,22 @@
+{% extends 'base.html' %} {% block content %}
+
+<div>
+  <a class="mr-2" href="">{{ object.author }}</a>
+  <small class="text-muted">{{ object.date_posted|date:"M d, Y"}}</small>
+</div>
+<h2><a class="">{{ object.title }}</a></h2>
+<p class="">{{ object.description | safe }}</p>
+
+{% if object.author == user %}
+  <a class="btn btn-info" href="{% url 'question_update' object.id %}">
+    Update
+  </a>
+   <a class="btn btn-danger" href="{% url 'question_delete' object.id %}">
+    Delete
+  </a> 
+  
+  {% endif %}
+
+</div>
+ {% endblock content %}
+

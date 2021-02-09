@@ -3,6 +3,7 @@ from django.contrib.auth.models import User
 from ckeditor.fields import RichTextField
 from django.utils import timezone
 from django.utils.text import slugify
+from django.urls import reverse
 
 
 # Create your models here.
@@ -18,6 +19,10 @@ class Question(models.Model):
     def __str__(self) -> str:
         return self.title
 
+    def get_absolute_url(self):
+        return reverse("question_detail", kwargs={"pk": self.pk})
+
     def save(self, *args, **kwargs):
-        self.slug = slugify(f"{self.title} {self.author.id} {self.date_posted.strftime('%S')}")
+        self.slug = slugify(
+            f"{self.title} {self.author.id} {self.date_posted.strftime('%S')}")
         super(Question, self).save(*args, **kwargs)

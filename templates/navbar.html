@@ -36,7 +36,11 @@
     {% if user.is_authenticated %}
 
     <div class="navbar-nav ml-auto mt-lg-0 mx-2">
-      <a class="btn btn-outline-info my-sm-0 mr-2" href="">New Question</a>
+      <a
+        class="btn btn-outline-info my-sm-0 mr-2"
+        href="{% url 'question_create' %}"
+        >New Question</a
+      >
       <a class="btn btn-outline-info my-sm-0 mr-2" href="">Profile</a>
       <a class="btn btn-outline-danger my-sm-0" href="{% url 'logout' %}"
         >Logout</a

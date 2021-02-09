@@ -9,11 +9,20 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
-from . import views
 from django.urls import path
+from .views import (QuestionListView,
+                    QuestionDetailView,
+                    QuestionCreateView,
+                    QuestionUpdateView,
+                    QuestionDeleteView)
 
 urlpatterns = [
-    path('', views.question_list, name='question_list'),
-    path('question/create', views.create_question, name='create_question'),
+    path('', QuestionListView.as_view(), name='question_list'),
+    path('question/<int:pk>/', QuestionDetailView.as_view(), name='question_detail'),
+    path('question/new/', QuestionCreateView.as_view(), name='question_create'),
+    path('question/<int:pk>/update',
+         QuestionUpdateView.as_view(), name='question_update'),
+    path('question/<int:pk>/delete',
+         QuestionDeleteView.as_view(), name='question_delete')
 
 ]

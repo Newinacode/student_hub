@@ -1,0 +1,18 @@
+{% extends 'base.html' %} {% block content %} {% for question in questions %}
+
+<div>
+  <a class="mr-2" href="">{{ question.author }}</a>
+  <small class="text-muted">{{ question.date_posted| date:"M d, Y" }}</small>
+</div>
+
+<h2>
+  <a class="article-title" href="{% url 'question_detail' question.id %}"
+    >{{ question.title }}</a
+  >
+</h2>
+
+<p class="article-content">
+  {{ question.description | truncatewords:30 | safe }}
+</p>
+
+{% endfor %} {% endblock content %}
