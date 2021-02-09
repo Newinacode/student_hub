@@ -20,11 +20,17 @@ from django.conf import settings
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('question/', include('questions.urls')),
     path('', include('questions.urls')),
-    path('events/',include('events.urls')),
+    path('', include('events.urls')),
+    path('', include('users.urls'))
 ]
 if (settings.DEBUG):
     urlpatterns += static(settings.STATIC_URL,
                           document_root=settings.STATIC_ROOT)
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_URL)
+
+# Custom changes to django admin panel
+
+admin.site.site_header = 'Student Hub Admin'
+admin.site.site_title = 'Student Hub Admin Portal'
+admin.site.index_title = 'Welcome to Student Hub Admin Portal'

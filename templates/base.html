@@ -33,7 +33,9 @@
       <div class="row">
         <!-- Error message on top of the page -->
         {% if messages %} {% for message in messages %}
-        <div class="alert alert-{{message.tags}}">{{ message }}</div>
+        <div class="col-md-10 offset-md-2 alert alert-{{message.tags}}">
+          {{ message }}
+        </div>
         {% endfor %} {% endif %}
         <!-- End of error message -->
         <div class="col-md-2 px-1 position-fixed">

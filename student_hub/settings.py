@@ -140,6 +140,9 @@ STATICFILES_DIRS = [
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
+LOGIN_REDIRECT_URL = 'question_list'
+LOGIN_URL = 'login'
+
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
 # Ckeditor configurations

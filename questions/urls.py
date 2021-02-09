@@ -13,5 +13,7 @@ from . import views
 from django.urls import path
 
 urlpatterns = [
-    path('', views.create_question, name='create_question'),
+    path('', views.question_list, name='question_list'),
+    path('question/create', views.create_question, name='create_question'),
+
 ]
