@@ -17,6 +17,7 @@ from django.contrib import admin
 from django.urls import path, include
 from django.conf.urls.static import static
 from django.conf import settings
+import users
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -34,3 +35,10 @@ if (settings.DEBUG):
 admin.site.site_header = 'Student Hub Admin'
 admin.site.site_title = 'Student Hub Admin Portal'
 admin.site.index_title = 'Welcome to Student Hub Admin Portal'
+
+# For Custom Error
+
+# handler404 = 'users.views.my_custom_page_not_found_view'
+# handler500 = 'users.views.my_custom_error_view'
+handler403 = 'users.views.my_custom_permission_denied_view'
+# handler400 = 'users.views.my_custom_bad_request_view'

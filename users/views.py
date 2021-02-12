@@ -1,3 +1,4 @@
+from django.http import response
 from django.shortcuts import render, redirect
 from django.contrib import messages
 from .forms import UserRegisterForm
@@ -21,3 +22,12 @@ def register(request):
 
 def login(request):
     return render(request, 'users/login.html')
+
+# For custom Error Handling
+
+
+def my_custom_permission_denied_view(request, exception):
+    context = {}
+    response = render(request, '403.html', context=context)
+    response.status_code = 403
+    return response
