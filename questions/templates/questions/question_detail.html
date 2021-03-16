@@ -7,6 +7,13 @@
 <h2><a class="">{{ object.title }}</a></h2>
 <p class="">{{ object.description | safe }}</p>
 
+
+<!-- Section For Comments -->
+
+
+
+<!-- End of Comment Section -->
+
 {% if object.author == user %}
   <a class="btn btn-info" href="{% url 'question_update' object.id %}">
     Update

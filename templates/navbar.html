@@ -17,19 +17,22 @@
   </button>
 
   <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
-    <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+    <ul class="navbar-nav mr-auto">
       <li class="nav-item active">
         <a class="nav-link" href="{% url 'question_list' %}"
           >Home <span class="sr-only"></span
         ></a>
       </li>
     </ul>
-    <form class="form-inline my-2 my-lg-0">
-      <input class="form-control mr-sm-2" type="search" placeholder="Search" />
-      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">
+
+    <!-- Search Section -->
+    <form class="form-inline">
+      <input class="form-control-sm" type="search" placeholder="Search" />
+      <button class="btn btn-sm btn-outline-success my-2 my-sm-0" type="submit">
         Search
       </button>
     </form>
+    <!-- End of Search Section  -->
 
     <!-- Navbar Right Side -->
     <!-- What the user sees if he is logged in -->
@@ -37,12 +40,12 @@
 
     <div class="navbar-nav ml-auto mt-lg-0 mx-2">
       <a
-        class="btn btn-outline-info my-sm-0 mr-2"
+        class="btn btn-sm btn-outline-info my-sm-0 mr-2"
         href="{% url 'question_create' %}"
         >New Question</a
       >
-      <a class="btn btn-outline-info my-sm-0 mr-2" href="">Profile</a>
-      <a class="btn btn-outline-danger my-sm-0" href="{% url 'logout' %}"
+      <a class="btn btn-sm btn-outline-info my-sm-0 mr-2" href="">Profile</a>
+      <a class="btn btn-sm btn-outline-danger my-sm-0" href="{% url 'logout' %}"
         >Logout</a
       >
     </div>
@@ -50,10 +53,12 @@
     {% else %}
 
     <div class="navbar-nav ml-auto mt-lg-0 mx-2">
-      <a class="btn btn-outline-info my-sm-0 mr-2" href="{% url 'login' %}"
+      <a
+        class="btn btn-sm btn-outline-info my-sm-0 mr-2"
+        href="{% url 'login' %}"
         >Log In</a
       >
-      <a class="btn btn-outline-info my-sm-0" href="{% url 'register' %}"
+      <a class="btn btn-sm btn-outline-info my-sm-0" href="{% url 'register' %}"
         >Sign Up</a
       >
     </div>

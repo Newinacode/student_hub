@@ -39,6 +39,7 @@ ALLOWED_HOSTS = []
 
 INSTALLED_APPS = [
     'users',
+    'comments',
     'questions',
     'notes',
     'events',
@@ -51,7 +52,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'crispy_forms',
     'ckeditor',
-    'django_cleanup'  # should be after the apps if order for it to work
+    'fontawesome-free',
+    'django_cleanup',  # should be after the apps if order for it to work
 ]
 
 MIDDLEWARE = [

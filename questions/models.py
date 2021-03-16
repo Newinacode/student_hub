@@ -15,6 +15,7 @@ class Question(models.Model):
     description = RichTextField(blank=True, null=True)
     slug = models.SlugField(unique=True, blank=True)
     date_posted = models.DateTimeField(default=timezone.now)
+    vote = models.IntegerField(default=0)
 
     def __str__(self) -> str:
         return self.title

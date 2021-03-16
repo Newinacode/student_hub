@@ -1,3 +1,4 @@
+{%load static%}
 <!DOCTYPE html>
 <html lang="en">
   <!-- Start of Head -->
@@ -30,12 +31,12 @@
         </div>
         {% endfor %} {% endif %}
         <!-- End of error message -->
-        <div class="col-md-2 px-1 position-fixed">
+        <div class="col-sm-1 px-1 position-fixed d-none d-md-block">
           <div class="flex-column flex-nowrap vh-100 overflow-auto p-2">
             {% include 'sidebar.html' %}
           </div>
         </div>
-        <div class="col-md-10 offset-2">
+        <div class="col-sm-11 offset-1">
           {% block content %} {% endblock content %}
         </div>
       </div>
@@ -58,6 +59,8 @@
       integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
       crossorigin="anonymous"
     ></script>
+    <!-- Main Javascript -->
+    <script src="{% static 'js/main.js' %}"></script>
   </body>
   <!-- End Of Body -->
 </html>
