@@ -15,7 +15,13 @@ class Question(models.Model):
     description = RichTextField(blank=True, null=True)
     slug = models.SlugField(unique=True, blank=True)
     date_posted = models.DateTimeField(default=timezone.now)
-    vote = models.IntegerField(default=0)
+    votes = models.IntegerField(default=0)
+    vote = models.ManyToManyField(
+        User, related_name='vote', default=None, blank=True)
+
+    @property
+    def views_count(self):
+        return QuestionView.objects.filter(question=self).count()
 
     def __str__(self) -> str:
         return self.title
@@ -27,3 +33,22 @@ class Question(models.Model):
         self.slug = slugify(
             f"{self.title} {self.author.id} {self.date_posted.strftime('%S')}")
         super(Question, self).save(*args, **kwargs)
+
+
+class Vote(models.Model):
+    question = models.ForeignKey(
+        Question, related_name='questionid', on_delete=models.CASCADE, default=None, blank=True)
+    user = models.ForeignKey(User, related_name='userid',
+                             on_delete=models.CASCADE, default=None, blank=True)
+    vote = models.BooleanField(default=True)
+
+    def __str__(self):
+        return str(self.user) + '-> ' + str(self.question.title)
+
+
+class QuestionView(models.Model):
+    IPAddress = models.GenericIPAddressField(default='45.243.82.169')
+    question = models.ForeignKey(Question, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return f'{self.IPAddres} in {self.question.title} question'

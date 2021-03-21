@@ -3,4 +3,9 @@ from .models import Note
 
 # Register your models here.
 
-admin.site.register(Note)
+
+@admin.register(Note)
+class AuthorAdmin(admin.ModelAdmin):
+    prepopulated_fields = {
+        'slug': ('title', 'author',),
+    }

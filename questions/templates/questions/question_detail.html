@@ -1,19 +1,45 @@
 {% extends 'base.html' %} {% block content %}
 
+<div class = "container-fluid">
+<div class ="row">
+<!-- Upvote/Downvote Section -->
+<div class="col-sm-1">
+      <div class="vote mt-3">
+        <span
+          class="text-success"
+          href=""
+          data-toggle="tooltip"
+          title="Vote Up"
+        >
+          <i
+            class="fas fa-sort-up fa-3x voting"
+            value="upvote"
+            data-question="{{question.id}}"
+          ></i
+        ></span>
+        <p class="mt-2" id="votes">{{question.votes}}</p>
+        <span
+          class="text-danger"
+          href=""
+          data-toggle="tooltip"
+          title="Vote Down"
+        >
+          <i
+            class="fas fa-sort-down fa-3x voting"
+            value="downvote"
+            data-question="{{question.id}}"
+          ></i
+        ></span>
+      </div>
+    </div>
+  <!-- End of Upvote/Downvote Section -->
+<div class ="col-sm-11">
 <div>
   <a class="mr-2" href="">{{ object.author }}</a>
   <small class="text-muted">{{ object.date_posted|date:"M d, Y"}}</small>
 </div>
 <h2><a class="">{{ object.title }}</a></h2>
 <p class="">{{ object.description | safe }}</p>
-
-
-<!-- Section For Comments -->
-
-
-
-<!-- End of Comment Section -->
-
 {% if object.author == user %}
   <a class="btn btn-info" href="{% url 'question_update' object.id %}">
     Update
@@ -23,7 +49,11 @@
   </a> 
   
   {% endif %}
+</div>
 
+</div>
+</div>
+</div>
 </div>
  {% endblock content %}
 

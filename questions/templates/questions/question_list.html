@@ -1,14 +1,15 @@
 {% extends 'base.html' %} {% block content %} {% for question in questions %}
-<div class="container-fluid mb-3">
+<div class="container-fluid mb-3 p-0">
   <div class="row">
-    <div class="col-sm-1">
-      <div class="vote mt-3">
-        <span class="text-success"> <i class="fas fa-sort-up fa-2x"></i></span>
-        <p class="mt-2">{{question.vote}}</p>
-        <span class="text-danger"> <i class="fas fa-sort-down fa-2x"></i></span>
-      </div>
+    <div class="col-sm-1 border-right justify-content-center align-self-center">
+      <div>{{question.votes}}</div>
+      <div>Votes</div>
     </div>
-    <div class="col-sm-11">
+    <div class="col-sm-1 border-right justify-content-center align-self-center">
+      <div>123</div>
+      <div>Views</div>
+    </div>
+    <div class="col-sm-9">
       <div class="card">
         <div class="card-body">
           <h4>

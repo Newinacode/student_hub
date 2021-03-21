@@ -14,7 +14,8 @@ from .views import (QuestionListView,
                     QuestionDetailView,
                     QuestionCreateView,
                     QuestionUpdateView,
-                    QuestionDeleteView)
+                    QuestionDeleteView,
+                    vote)
 
 urlpatterns = [
     path('', QuestionListView.as_view(), name='question_list'),
@@ -23,6 +24,7 @@ urlpatterns = [
     path('question/<int:pk>/update',
          QuestionUpdateView.as_view(), name='question_update'),
     path('question/<int:pk>/delete',
-         QuestionDeleteView.as_view(), name='question_delete')
+         QuestionDeleteView.as_view(), name='question_delete'),
+    path('question/vote/', vote, name='question_vote')
 
 ]

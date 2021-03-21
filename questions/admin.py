@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Question
+from .models import Question, Vote, QuestionView
 
 # Register your models here.
 
@@ -10,3 +10,5 @@ class QuestionAdmin(admin.ModelAdmin):
 
 
 admin.site.register(Question, QuestionAdmin)
+admin.site.register(Vote)
+admin.site.register(QuestionView)
