@@ -1,0 +1,15 @@
+{% extends 'base.html' %} {% load crispy_forms_tags %}
+
+<!-- Start of block -->
+{% block content %}
+<!-- Form for adding new notes -->
+<form action="" method="POST">
+  {% csrf_token %}
+  <!-- Form media for ckeditor -->
+  {{form.media}} {{form|crispy}}
+  <div class="form-group">
+    <button class="btn btn-info" type="submit">Add New Note</button>
+  </div>
+</form>
+
+{% endblock content %}

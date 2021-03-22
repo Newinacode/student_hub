@@ -1,0 +1,37 @@
+{% extends 'base.html' %} {% load static %}
+<!-- Start of block -->
+{% block content %}
+<div class="my-3">
+  <a href="{% url 'note_create' %}" class="btn btn-success">Add New Notes</a>
+</div>
+<!-- Start displaying notes here -->
+<div class="container-fluid">
+  {% for note in notes %}
+  <div class="card mt-3">
+    <div class="card-body">
+      <div class="d-flex justify-content-between">
+        <a href="{% url 'note_detail' note.id %}"
+          ><h5 class="card-title">{{note.title}}</h5></a
+        >
+        <p class="text-muted">Added By: {{note.author}}</p>
+      </div>
+      <p class="card-text">{{note.description|safe|truncatewords:30}}</p>
+      <div class="d-flex justify-content-between">
+        {% if note.document%}
+        <a href="{{note.document.url}}" class="btn btn-info" target="_blank"
+          ><i class="far fa-eye"></i>View the Document</a
+        >
+        <a href="{{note.document.url}}" download class="btn btn-primary"
+          >Download</a
+        >
+        {% endif %}
+        <p class="text-muted">{{note.category}}</p>
+      </div>
+    </div>
+  </div>
+
+  {% endfor %}
+  <!-- End of notes -->
+  {% endblock content %}
+  <!-- End of content -->
+</div>
