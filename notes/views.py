@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from .forms import NoteForm
-from django.views.generic import ListView, CreateView, DetailView, UpdateView
+from django.views.generic import ListView, CreateView, DetailView, UpdateView, DeleteView
 from .models import Note
 from django.urls import reverse
 
@@ -41,6 +41,17 @@ class NoteUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
     def form_valid(self, form):
         form.instance.author = self.request.user
         return super().form_valid(form)
+
+    def test_func(self):
+        note = self.get_object()
+        if self.request.user == note.author:
+            return True
+        return False
+
+
+class NoteDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
+    model = Note
+    success_url = '/notes/'
 
     def test_func(self):
         note = self.get_object()
