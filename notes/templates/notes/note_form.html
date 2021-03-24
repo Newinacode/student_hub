@@ -3,7 +3,7 @@
 <!-- Start of block -->
 {% block content %}
 <!-- Form for adding new notes -->
-<form action="" method="POST">
+<form enctype="multipart/form-data" action="" method="POST">
   {% csrf_token %}
   <!-- Form media for ckeditor -->
   {{form.media}} {{form|crispy}}
