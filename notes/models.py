@@ -5,6 +5,7 @@ from django.utils import timezone
 from django.utils.text import slugify
 from .validators import validate_file_size
 from django.urls import reverse
+
 # Create your models here.
 
 

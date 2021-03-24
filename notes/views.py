@@ -24,9 +24,6 @@ class NoteCreateView(LoginRequiredMixin, CreateView):
         form.instance.author = self.request.user
         return super().form_valid(form)
 
-    def get_success_url(self) -> str:
-        return reverse('note_detail', kwargs={"pk": self.object.id})
-
 
 class NoteDetailView(DetailView):
     model = Note
