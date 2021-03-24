@@ -42,3 +42,6 @@ class Note(models.Model):
         if not self.slug:
             self.slug = slugify(slug_field)
         return super().save(*args, **kwargs)
+
+    def get_absolute_url(self) -> str:
+        return reverse('note_detail', kwargs={"pk": self.pk})
