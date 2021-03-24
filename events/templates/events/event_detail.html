@@ -1,0 +1,47 @@
+{% extends 'base.html' %} {% block content %}
+
+<div class = "container-fluid">
+<div class ="row">
+
+<div class ="col-sm-11">
+    <div class="col-sm-9">
+        <div class="card">
+          <div class="card-body">
+            <h4>
+              <a href="{% url 'event-detail' event.id %}" class="card-title"
+                >{{ event.name }}</a
+              >
+            </h4>
+            <p class="card-text">
+              {{event.description|safe|truncatewords:50}}
+            </p>
+            <div class="d-flex justify-content-between">
+                <i class="fas fa-clock fa-lg">start from {{ event.start_date|date:"M d, Y" }}</i>
+                <i class="fas fa-clock fa-lg">end at {{ event.end_date|date:"M d, Y" }}</i>
+            </div>
+          </div>
+          <div class="card-footer text-muted">
+            <div class="text-center d-flex justify-content-between">
+              <span>{{ event.date_posted|date:"M d, Y" }}</span>
+              <span>{{ event.author }}</span>
+            </div>
+          </div>
+        </div>
+      </div>
+{% if event.author == user %}
+  <a class="btn btn-info" href="{% url 'event-update' event.id %}">
+    Update
+  </a>
+   <a class="btn btn-danger" href="{% url 'event-delete' event.id %}">
+    Delete
+  </a> 
+  
+  {% endif %}
+</div>
+
+</div>
+</div>
+</div>
+</div>
+ {% endblock content %}
+
