@@ -16,6 +16,8 @@ class QuestionListView(ListView):
     ordering = ['-date_posted']
 
 
+
+
 class QuestionDetailView(DetailView):
     model = Question
 
