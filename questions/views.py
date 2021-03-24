@@ -3,11 +3,23 @@ from django.db.models.query_utils import Q
 from django.http import request
 from django.http.response import JsonResponse
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
-from .models import Question, Vote
+from .models import Question, Vote , QuestionView
 from django.db.models import F
 
 
+
 # Create your views here.
+
+def visitor_ip_address(request):
+
+    x_forwarded_for = request.META.get('HTTP_X_FORWARDED_FOR')
+
+    if x_forwarded_for:
+        ip = x_forwarded_for.split(',')[0]
+    else:
+        ip = request.META.get('REMOTE_ADDR')
+    return ip
+
 
 
 class QuestionListView(ListView):
@@ -20,6 +32,25 @@ class QuestionListView(ListView):
 
 class QuestionDetailView(DetailView):
     model = Question
+
+
+
+
+
+    def get(self, request, *args, **kwargs):
+        
+        ip = visitor_ip_address(request)
+        # print(ip)
+        # print(request.META.get('HTTP_X_FORWARDED_FOR'))
+        question = Question.objects.get(pk=kwargs['pk'])
+        try:
+            QuestionView.objects.get(IPAddress=ip,question=question)
+        except:
+            QuestionView.objects.create(IPAddress=ip,question=question)
+
+            
+        # print(request.headers) 
+        return super().get(request)
 
 
 class QuestionCreateView(LoginRequiredMixin, CreateView):

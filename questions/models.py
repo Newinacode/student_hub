@@ -21,7 +21,7 @@ class Question(models.Model):
 
     @property
     def views_count(self):
-        return QuestionView.objects.filter(question=self).count()
+        return QuestionView.objects.filter(question=self.pk).count()
 
     def __str__(self) -> str:
         return self.title
@@ -51,4 +51,4 @@ class QuestionView(models.Model):
     question = models.ForeignKey(Question, on_delete=models.CASCADE)
 
     def __str__(self):
-        return f'{self.IPAddres} in {self.question.title} question'
+        return f'{self.IPAddress} in {self.question.title} question'
