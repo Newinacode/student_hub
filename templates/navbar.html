@@ -30,7 +30,7 @@
       </li>
       <li class="nav-item active">
         <a class="nav-link" href="{% url 'event-list' %}"
-          >Event<span class="sr-only"></span
+          >Events<span class="sr-only"></span
         ></a>
       </li>
     </ul>
@@ -49,9 +49,13 @@
     <!-- Navbar Right Side -->
     <!-- What the user sees if he is logged in -->
     {% if user.is_authenticated %}
-
-    <!-- Start of profile section -->
     <div class="navbar-nav ml-auto mt-lg-0 mx-2">
+      <li>
+        <a class="nav-link active" href="{% url 'question_create' %}"
+          >Question <span class="sr-only"></span
+        ></a>
+      </li>
+      <!-- Start of profile section -->
       <ul class="navbar-nav">
         <li class="nav-item dropdown">
           <a
@@ -70,17 +74,20 @@
               class="rounded-circle"
             />
           </a>
-          <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
-            <a class="dropdown-item" href="{% url 'profile' %}"><i class="fas fa-user pr-2"></i>Profile</a>
-            <a class="dropdown-item" href="{% url 'logout' %}"><i class="fas fa-sign-out-alt pr-2"></i>Log Out</a>
+          <div
+            class="dropdown-menu dropdown-menu-right"
+            aria-labelledby="navbarDropdownMenuLink"
+          >
+            <a class="dropdown-item" href="{% url 'profile' %}"
+              ><i class="fas fa-user pr-2"></i>Profile</a
+            >
+            <a class="dropdown-item" href="{% url 'logout' %}"
+              ><i class="fas fa-sign-out-alt pr-2"></i>Log Out</a
+            >
           </div>
         </li>
       </ul>
       <!-- End Of Profile Section -->
-        <a class="nav-link active" href="{% url 'question_create' %}"
-          >Question <span class="sr-only"></span
-        ></a>
-      </li>
     </div>
     <!-- What the user sees if he is not logged in -->
     {% else %}
