@@ -7,3 +7,8 @@ form {
 .register {
   width: 50%;
 }
+
+.profile-image {
+  width: 100px;
+  height: 100px;
+}

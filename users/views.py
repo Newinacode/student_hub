@@ -2,6 +2,8 @@ from django.http import response
 from django.shortcuts import render, redirect
 from django.contrib import messages
 from .forms import UserRegisterForm
+from .models import Profile
+from django.contrib.auth.models import User
 
 # Create your views here.
 
@@ -23,7 +25,11 @@ def register(request):
 def login(request):
     return render(request, 'users/login.html')
 
-# For custom Error Handling
+
+def profile(request):
+    return render(request, 'users/profile.html')
+
+    # For custom Error Handling
 
 
 def my_custom_permission_denied_view(request, exception):
