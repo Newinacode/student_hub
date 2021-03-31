@@ -22,13 +22,6 @@ def register(request):
     return render(request, 'users/register.html', {'form': form})
 
 
-def login(request):
-    if request.user.is_authenticated:
-        return redirect('question_list')
-    else:
-        return render(request, 'users/login.html')
-
-
 @login_required
 def profile(request):
     return render(request, 'users/profile.html')

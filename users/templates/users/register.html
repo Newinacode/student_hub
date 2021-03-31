@@ -2,20 +2,30 @@
 
 <!-- Default form register -->
 <form class="text-center border border-light register" action="" method="POST">
-  {% csrf_token %}
-  <div class="form-group">
-    <legend class="h4 mb-4">Sign up</legend>
-
-    {{form|crispy}}
+  <h2>Create an Account</h2>
+  <p class="hint-text">
+    Sign up with your social media account or email address
+  </p>
+  <div class="social-btn text-center">
+    <a href="#" class="btn btn-primary btn-lg"
+      ><i class="fab fa-facebook-f"></i>Facebook</a
+    >
+    <a href="#" class="btn btn-info btn-lg"
+      ><i class="fab fa-twitter"></i> Twitter</a
+    >
+    <a href="#" class="btn btn-danger btn-lg"
+      ><i class="fab fa-google"></i> Google</a
+    >
   </div>
+  <div class="or-seperator"><b>or</b></div>
+  {% csrf_token %}
+  <div class="form-group">{{form|crispy}}</div>
 
   <!-- Sign up button -->
   <button class="btn btn-info my-4 btn-block" type="submit">Register</button>
-  <div class="border-top pt-3">
-    <small class="text-muted">
-      Already have an account?
-      <a class="ml-2" href="{% url 'login' %}"> Sign In</a>
-    </small>
+  <div class="border-top pt-3"></div>
+  <div class="text-center">
+    Already have an account? <a href="#">Sign In</a>
   </div>
 </form>
 <!-- Default form register -->
