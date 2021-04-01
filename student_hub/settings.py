@@ -52,7 +52,6 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'crispy_forms',
     'ckeditor',
-    'fontawesome-free',
     'django_cleanup',  # should be after the apps if order for it to work
 ]
 
