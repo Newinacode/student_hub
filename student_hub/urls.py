@@ -17,13 +17,14 @@ from django.contrib import admin
 from django.urls import path, include
 from django.conf.urls.static import static
 from django.conf import settings
-
+from comments.views import CreateComment
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('questions.urls')),
     path('events/', include('events.urls')),
     path('', include('users.urls')),
     path('', include('notes.urls')),
+    path('',include('comments.urls')),
 ]
 if (settings.DEBUG):
     urlpatterns += static(settings.STATIC_URL,

@@ -4,7 +4,8 @@ from ckeditor.fields import RichTextField
 from django.utils import timezone
 from django.utils.text import slugify
 from django.urls import reverse
-
+from django.contrib.contenttypes.fields import GenericRelation
+from comments.models import Comment
 
 # Create your models here.
 
@@ -18,7 +19,7 @@ class Question(models.Model):
     votes = models.IntegerField(default=0)
     vote = models.ManyToManyField(
         User, related_name='vote', default=None, blank=True)
-
+    comments = GenericRelation(Comment)
     @property
     def views_count(self):
         return QuestionView.objects.filter(question=self.pk).count()

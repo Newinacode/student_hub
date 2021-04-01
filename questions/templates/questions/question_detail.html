@@ -1,5 +1,5 @@
 {% extends 'base.html' %} {% block content %}
-
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous"></script>
 <div class = "container-fluid">
 <div class ="row">
 <!-- Upvote/Downvote Section -->
@@ -52,8 +52,50 @@
 </div>
 
 </div>
+
+<div class='row'>
+{% for comment in object.comments.all %}
+
+  <div id="{{comment.id}}">
+    {{comment.user}}
+
+    <span>{{ comment.content|safe }}</span>
+    {% if user == comment.user %}
+    <a class="btn btn-primary" href="{% url 'delete-comment' comment.id %}" role="button">delete</a>
+     <button  onclick="handle_click({{comment.id}})">update</button>
+    {% endif %}
+
+
+  </div>
+
+{% endfor %}
 </div>
+
+
+
 </div>
+
+
+<script type="text/javascript">
+function handle_click(id){
+  var url = "{% url 'update-comment' 5 %}".replace('5',id);
+  
+    $.get(url,function(data){
+      $(`#${id}`).html(data); 
+     
+      
+    })
+   
+}
+
+</script>
+
+<div class="comment-section">
+  
+
 </div>
+
+
+
  {% endblock content %}
 
